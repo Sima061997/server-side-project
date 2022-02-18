@@ -40,8 +40,10 @@ app.use(express.static('public'));
     },
     "Director": {
       "Name": "Chris Columbus",
-      "Bio": "",
-      "Birth": "September 10, 1958"
+      "Bio": "Chris Columbus was born in Spangler, Pennsylvania, and raised in Champion, Ohio, the only child born to Mary Irene (née Puskar), a factory worker, and Alex Michael Columbus, an aluminum plant worker and coal miner. He is of Italian and Czech descent.As a child, he enjoyed drawing storyboards and began making 8mm films in high school.After graduating from John F. Kennedy High School in Warren, Ohio, he went on to study at New York University's film school at the Tisch School of the Arts, where he was a schoolmate of screenwriter Charlie Kaufman and Alec Baldwin. Although he received a scholarship, he forgot to renew it and was forced to take a factory job to pay for schooling. While on shifts, he secretly worked on a 20-page screenplay, which one of his teachers would later use to help him get an agent. Columbus now states that the experience \"saved my life\" and he was able to acknowledge \"the terrifying reality I faced of having to live and work in that factory for the rest of my life in that town if I didn't make it.\" ",
+
+      "Birth": "September 10, 1958",
+      "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7aHarry_Potter_and_the_Philosopher%27s_Stone_banner.jpg/220px-Harry_Potter_and_the_Philosopher%27s_Stone_banner.jpg"
 },
@@ -54,9 +56,10 @@ app.use(express.static('public'));
       "Description": "Fantasy is a genre of speculative fiction involving magical elements, typically set in a fictional universe and sometimes inspired by mythology and folklore. Its roots are in oral traditions, which then became fantasy literature and drama."
     },
     "Director": {
-      "Name": "Sir Peter Robert Jackson",
-      "Bio": "",
-      "Birth": "October 31 1961" 
+      "Name": "Peter Jackson",
+      "Bio": " Peter Jackson was born on 31 October 1961 in Wellington and was raised at the nearby coastal town of Pukerua Bay. His parents Joan (née Ruck), a factory worker and housewife, and William \"Bill\" Jackson, a wages clerk were emigrants from England. As a child, Jackson was a keen film fan, growing up on Ray Harryhausen films, as well as finding inspiration in the television series Thunderbirds and Monty Python's Flying Circus. After a family friend gave the Jacksons a Super 8 cine-camera with Peter in mind, he began making short films with his friends. Jackson has long cited King Kong as his favourite film, and around the age of nine he attempted to remake it using his own stop-motion models. Also, as a child Jackson made a World War II epic called The Dwarf Patrol seen on the Bad Taste bonus disc, which featured his first special effect of poking pinholes in the film for gun shots, and a James Bond spoof named Coldfinger.Most notable though was a 20-minute short called The Valley, which won him a special prize because of the shots he used.",
+      "Birth": "October 31 1961",
+      "Death": "-" 
     },
     "ImageURL": "https://twinfinite.net/wp-content/uploads/2021/05/Lord-of-the-Rings-quiz-28.jpeg"
   },
@@ -69,8 +72,9 @@ app.use(express.static('public'));
     }, 
     "Director": {
       "Name": "Christopher Nolan",
-      "Bio": "",
-      "Birth": "30 July 1970"
+      "Bio": "Nolan was born in Westminster, London, and grew up in Highgate. He was raised a Catholic. His father, Brendan James Nolan, was a British advertising executive who worked as a creative director. His mother, Christina (née Jensen), was an American flight attendant who would later work as an English teacher. Nolan's childhood was split between London and Evanston, Illinois, and he has both British and US citizenship. He has an elder brother, Matthew, and a younger brother, Jonathan, also a filmmaker. Growing up, Nolan was particularly influenced by the work of Ridley Scott, and the science fiction films 2001: A Space Odyssey (1968) and Star Wars (1977). He began making films at age seven, borrowing his father's Super 8 camera and shooting short films with his action figures. These films included a stop motion animation homage to Star Wars called Space Wars. He cast his brother Jonathan and built sets from \"clay, flour, egg boxes and toilet rolls.\" His uncle, who worked at NASA building guidance systems for the Apollo rockets, sent him some launch footage: \"I re-filmed them off the screen and cut them in, thinking no-one would notice\", Nolan later remarked. From the age of eleven, he aspired to be a professional filmmaker.[11] Between 1981 and 1983, Nolan enrolled at Barrow Hills, a Catholic prep school in Weybridge, Surrey, run by Josephite priests.[18] In his teenage years, Nolan started making films with Adrien and Roko Belic. Nolan and Roko co–directed the surreal 8 mm Tarantella (1989), which was shown on Image Union, an independent film and video showcase on the Public Broadcasting Service.",
+      "Birth": "30 July 1970",
+      "Death": "-"
     },
     "ImageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBS2-0Bjcho-DttjJ2O57uG_QQ66a61BKtdA&usqp=CAU"
   },
@@ -83,8 +87,9 @@ app.use(express.static('public'));
     },
     "Director": {
       "Name": "Christopher Nolan",
-      "Bio": "",
-      "Birth": "30 July 1970"
+      "Bio": "Nolan was born in Westminster, London, and grew up in Highgate. He was raised a Catholic. His father, Brendan James Nolan, was a British advertising executive who worked as a creative director. His mother, Christina (née Jensen), was an American flight attendant who would later work as an English teacher. Nolan's childhood was split between London and Evanston, Illinois, and he has both British and US citizenship. He has an elder brother, Matthew, and a younger brother, Jonathan, also a filmmaker. Growing up, Nolan was particularly influenced by the work of Ridley Scott, and the science fiction films 2001: A Space Odyssey (1968) and Star Wars (1977). He began making films at age seven, borrowing his father's Super 8 camera and shooting short films with his action figures. These films included a stop motion animation homage to Star Wars called Space Wars. He cast his brother Jonathan and built sets from \"clay, flour, egg boxes and toilet rolls.\" His uncle, who worked at NASA building guidance systems for the Apollo rockets, sent him some launch footage: \"I re-filmed them off the screen and cut them in, thinking no-one would notice\", Nolan later remarked. From the age of eleven, he aspired to be a professional filmmaker.[11] Between 1981 and 1983, Nolan enrolled at Barrow Hills, a Catholic prep school in Weybridge, Surrey, run by Josephite priests.[18] In his teenage years, Nolan started making films with Adrien and Roko Belic. Nolan and Roko co–directed the surreal 8 mm Tarantella (1989), which was shown on Image Union, an independent film and video showcase on the Public Broadcasting Service.",
+      "Birth": "30 July 1970",
+      "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg"
   },
@@ -97,8 +102,9 @@ app.use(express.static('public'));
     },
     "Director": {
       "Name": "Morten Tyldum",
-      "Bio": "",
-      "Birth": "19 May 1967" 
+      "Bio": "Tyldum was born in Bergen, Norway. He was educated at the School of Visual Arts in New York.[1] He originally wanted to be a musician, but abandoned the ambition when he entered film school.He had his feature film debut with Buddy in 2003, a film that won great popular and critical acclaim. Previously he had worked in television, music videos, commercials and short films. He had been named Film Talent of the Year by the newspaper Dagbladet in 1999.Since Buddy, he has made the movie Fallen Angels in 2008 and Headhunters (Hodejegerne) in 2011. Headhunters is based on the 2008 novel by same name written by Jo Nesbø. It became the highest-grossing Norwegian film that year.He made his English language debut with the historical drama The Imitation Game, about the life of mathematician Alan Turing, starring Benedict Cumberbatch. The Imitation Game immediately became an international success, and was nominated for eight Oscars at the 87th Academy Awards, including Best Picture and a Best Director nomination for Tyldum himself.",
+      "Birth": "19 May 1967",
+      "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/8/87/The_Imitation_Game_%282014%29.png"
   },
@@ -111,8 +117,9 @@ app.use(express.static('public'));
     },
     "Director": {
       "Name": "James Marsh",
-      "Bio": "",
-      "Birth": "30 April 1963" 
+      "Bio": "Marsh was born in Truro, Cornwall and raised in Sennen, a Cornish village, and Woolwich, a district in southeast London. In Woolwich, he lived in a \"miserable council flat\" with his family.Marsh won a scholarship to the University of Oxford. As an undergraduate, he studied at St Catherine's College, Oxford and graduated with a degree in English.Marsh began his early career in directing with several documentaries made for the BBC. His first TV documentary was the 90-minute Troubleman  The Last Years of Marvin Gaye, and was followed by the 26-minute 1990 documentary The Animator of Prague starring Jan Švankmajer and his works. Later came The Burger and the King: The Life and Cuisine of Elvis Presley, which was made in 1995 and released in 1996, and the Welsh musician John Cale, which was made in 1998 and released in 1999. His relationship continued with the BBC as a director and producer for three Arena series episodes, including the celebrated film Wisconsin Death Trip (1999).",
+      "Birth": "30 April 1963" ,
+      "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/6/67/The_Theory_of_Everything_%282014%29.jpg"
   },
@@ -125,8 +132,9 @@ app.use(express.static('public'));
     },
     "Director": {
       "Name": "Josh Boone",
-      "Bio": "",
-      "Birth": "April 5, 1979"
+      "Bio": "Josh Boone is an American filmmaker. He is best known for directing the romantic drama The Fault in Our Stars (2014), based on the novel of the same name. Boone also wrote and directed the romantic comedy Stuck in Love (2012) and the superhero horror film The New Mutants (2020). In 2020, he directed the first and last episode of the miniseries The Stand.Boone made his film debut as writer and director of the romantic comedy-drama film Stuck in Love, which premiered in September 2012 at the Toronto International Film Festival. It began a limited theatrical release in the United States in July 2013. The film earned mixed to positive reviews from critics.",
+      "Birth": "April 5, 1979",
+      "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/The_Fault_in_Our_Stars_%28Official_Film_Poster%29.png/220px-The_Fault_in_Our_Stars_%28Official_Film_Poster%29.png"
   },
@@ -139,8 +147,9 @@ app.use(express.static('public'));
     },
     "Director": {
       "Name": "Martin Scorsese",
-      "Bio": "",
-      "Birth": "November 17, 1942"
+      "Bio": "Martin Charles Scorsese is an American director , screenwriter , film producer , and actor, born in Queens, New York City . He is one of the most influential directors of contemporary American cinema.The youngest son of textile workers Charles Scorsese (1913-1993) and Catherine Scorsese , née Cappa (1912-1997), spent months in bed with bronchial asthma , where he wrote his first screenplays and storyboards . In 1950 the family moved to Little Italy , where Scorsese first encountered the Church and decided to become a priest . After being expelled from the Jesuit school , he aimed to train as a teacher, but decided to study film at New York University in 1960. With the financial support of his lecturer, Scorsese made his first award-winning short films and completed his bachelor's degree in 1965 . While pursuing his master's degree , he spent four years working on his debut feature film , Who's That Knocking on My Door? (1967). The $75,000 budget would ruin him financially. Scorsese taught future star directors such as Oliver Stone and Jonathan Kaplan at university before moving to California and befriending Francis Ford Coppola , Steven Spielberg and George Lucas . In the fall of 1971 he filmed forRoger Corman 's first Hollywood film, The Fist of the Rebels , which found audiences despite mixed reviews.",
+      "Birth": "November 17, 1942",
+      "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg"
   },
@@ -153,8 +162,9 @@ app.use(express.static('public'));
     },
     "Director": {
       "Name": "Andrew Stanton",
-      "Bio": "",
-      "Birth": "December 3, 1965" 
+      "Bio": "Andrew Stanton was born in 1965 in Rockport, Massachusetts. His father, Ron Stanton, was the founder of a company that worked on radars for the United States Department of Defense. His mother, Gloria Stanton, pursued an acting career before becoming a homemaker. Both of Stanton's parents were natives of nearby Wellesley.Stanton acted in high school and directed sketch comedy shot on Super 8 film. He portrayed Barnaby Tucker in a 1980 high school production of Hello, Dolly!, which later became a source of inspiration for WALL-E. Stanton studied for a year at the University of Hartford before transferring to the character animation program at the California Institute of the Arts. He received his Bachelor of Fine Arts from CalArts in 1987.",
+      "Birth": "December 3, 1965",
+      "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Finding_Nemo.jpg/220px-Finding_Nemo.jpg"
   },
@@ -168,14 +178,16 @@ app.use(express.static('public'));
     "Director": 
       {
       "Name": "Olivier Nakache", 
-      "Bio": "",
-      "Birth": "15 April 1973"
+      "Bio": "Olivier Nakache (born April 14, 1973 in Suresnes ) is a French screenwriter and film director. Nakache's younger sister is filmmaker Géraldine Nakache . He has been a film director and screenwriter since the mid-1990s. To date he has been involved in more than ten film productions. In 2012 he was nominated together with Éric Toledano for the César in the categories Best Director and Best Picture .",
+      "Birth": "15 April 1973",
+      "Death": "-"
       },
       /*
       {
       "Name": "Éric Toledano" ,
-      "Bio": "",
-      "Birth": "3 July 1971"
+      "Bio": "Éric Toledano (born July 3, 1971 in Paris ) is a French screenwriter and film director. Toledano has been a film director and screenwriter since the mid-1990s. To date he has been involved in more than ten film productions. He was nominated for the 2012 César for Best Director and Best Film along with Olivier Nakache .",
+      "Birth": "3 July 1971",
+      "Death": "-"
       }
       */
   
