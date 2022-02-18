@@ -46,7 +46,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7aHarry_Potter_and_the_Philosopher%27s_Stone_banner.jpg/220px-Harry_Potter_and_the_Philosopher%27s_Stone_banner.jpg",
-    "Featured": "False"
+    "Featured": "true"
 },
 
   {
@@ -63,7 +63,7 @@ app.use(express.static('public'));
       "Death": "-" 
     },
     "ImageURL": "https://twinfinite.net/wp-content/uploads/2021/05/Lord-of-the-Rings-quiz-28.jpeg",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "Interstellar",
@@ -79,7 +79,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBS2-0Bjcho-DttjJ2O57uG_QQ66a61BKtdA&usqp=CAU",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "Inception",
@@ -95,7 +95,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "The Imitation Game",
@@ -111,7 +111,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/8/87/The_Imitation_Game_%282014%29.png",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "The Theory of Everything",
@@ -127,7 +127,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/6/67/The_Theory_of_Everything_%282014%29.jpg",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "The Fault in Our Stars",
@@ -143,7 +143,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/The_Fault_in_Our_Stars_%28Official_Film_Poster%29.png/220px-The_Fault_in_Our_Stars_%28Official_Film_Poster%29.png",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "Shutter Island",
@@ -159,7 +159,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "Finding Nemo",
@@ -175,7 +175,7 @@ app.use(express.static('public'));
       "Death": "-"
     },
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Finding_Nemo.jpg/220px-Finding_Nemo.jpg",
-    "Featured": "False"
+    "Featured": "true"
   },
   {
     "Title": "The Intouchables",
@@ -201,7 +201,7 @@ app.use(express.static('public'));
       */
   
     "ImageURL": "https://upload.wikimedia.org/wikipedia/en/9/93/The_Intouchables.jpg",
-    "Featured": "False"
+    "Featured": "true
   }
 ];
 
