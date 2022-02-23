@@ -66,7 +66,7 @@ app.get('/users/:Name', (req, res) => {
     });
 });
 
-
+//Get a data about a movie by Title
 app.get('/movies/:Title', (req, res) =>{
 Movies.findOne({ Title: req.params.Title }) 
  .then((movies) => {
@@ -105,7 +105,7 @@ app.get('/movies/genre/:Name', (req, res) => {
     })
   
 
-//Add a new user 
+//Add a new user if the user doesn't exist in list 
 app.post('/users', (req, res) => {
   Users.findOne({ Name: req.body.Name })
   .then((user) => {
@@ -215,159 +215,3 @@ app.listen(8080, () => {
   
   
 
-/*
-const express = require('express');
- 
- morgan = require('morgan');
-const bodyParser = require('body-parser'),
- uuid = require('uuid');
-const res = require('express/lib/response');
-
-app = express();
-
-app.use(bodyParser.json());
-
-app.use(morgan('common'));
-app.use(express.static('public'));
-
-  
- s
-
-app.use((err, req, res,next) => {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
-
-app.get('/', (req, res) => {
-res.send('Welcome to my favourite MovieList!!');
-});
-
-app.get('/documentation', (req, res) => {                  
-  res.sendFile('public/documentation.html', { root: __dirname });
-});
-
-//CREATE new user
-app.post('/users', (req, res) => {
-  const newUser = req.body;
-  if(newUser.name) {
-    newUser.id = uuid.v4();
-    users.push(newUser);
-    res.status(201).json(newUser)
-  }
-  else {
-    res.status(400).send('users need name')
-  }
-})
-
-//UPDATE the name of user
-app.put('/users/:id', (req, res) => {
-  const { id } = req.params;
-  const updatedUser = req.body;
-
-  let user = users.find( user => user.id == id );
-
-  if (user) {
-    user.name = updatedUser.name;
-    res.status(200).json(user);
-  }
-  else {
-    req.status(400).send('no such user');
-  }
-})
-
-//CREATE favorite movie to the user according to id
-app.post('/users/:id/:movieTitle', (req, res) => {
-  const { id, movieTitle } = req.params;
-
-  let user = users.find( user => user.id == id );
-
-  if (user) {
-   user.favoriteMovies.push(movieTitle);
-    res.status(200).send(`${movieTitle} has been added to user ${id}'s array`);
-  }
-  else {
-    req.status(400).send('no such user');
-  }
-})
-
-//DELETE delete the favoritemovie according to id
-app.delete('/users/:id/:movieTitle', (req, res) => {
-  const { id, movieTitle } = req.params;
-
-  let user = users.find( user => user.id == id );
-
-  if (user) {
-    user.favoriteMovies = user.favoriteMovies.filter( title => title !== movieTitle);
-   user.favoriteMovies.push(movieTitle);
-    res.status(200).send(`${movieTitle} has been removed from user ${id}'s array`);;
-  }
-  else {
-    req.status(400).send('no such user');
-  }
-})
-
-//DELETE the user according to id
-app.delete('/users/:id', (req, res) => {
-  const { id } = req.params;
-
-  let user = users.find( user => user.id == id );
-
-  if (user) {
-    users = users.filter( user => user.id != id);
-   //res.json(users);
-    res.status(200).send(`${id} has been deleted`);;
-  }
-  else {
-    req.status(400).send('no such user');
-  }
-})
-
-//READ the list of all movies with it's details
-app.get('/movies', (req, res) => {
-   res.status(200).json(movies);
-});
-
-//READ the detail of the movie according to it's title
-app.get('/movies/:Title', (req, res) => {
-const { Title } = req.params;
-const movie = movies.find( movie => movie.Title === Title);
-
-if (movie) {
-  res.status(200).json(movie);
-}
-else{
-  res.status(400).send('no such movie');
-}
-});
- 
-//READ the genre of a movie according to genre name
-app.get('/movies/genre/:genreName', (req, res) => {
-  const { genreName } = req.params;
-  const genre = movies.find( genre => genre.Genre.Name === genreName ).Genre;
-
-  if (genre) {
-    res.status(200).json(genre);
-  }
-  else{
-   console.log('No User Found');
-   //res.status(400).send('no such Genre');
-  }
-  });
-
-//READ the name of director of a movie by director name
-app.get('/movies/director/:directorName', (req, res) => {
-  const { directorName } = req.params;
-  const director = movies.find( director => director.Director.Name === directorName).Director;
-  
-  if (director) {
-    res.status(200).json(director);
-  }
-  else{
-    res.status(400).send('no such director');
-  }
-  });
-
-app.listen(8080, () => {
-console.log('Your app is listening on port 8080.');
-});
-*/
