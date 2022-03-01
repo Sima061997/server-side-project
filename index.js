@@ -11,6 +11,10 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./application/passport');
 // Morgan middleware library in use to log all requests to the terminal
 app.use(morgan('common'));
 // Function to serve all static files inside one folder
@@ -31,7 +35,7 @@ res.send('Welcome to MyFlix');
 });
 
 //Get all movies on list
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false}), (req, res) => {
   Movies.find()
   .then((movies) => { 
   res.status(201).json(movies);
@@ -43,7 +47,7 @@ app.get('/movies', (req, res) => {
 })
 
 //Get all the users in list
-app.get('/users', (req, res) => {
+app.get('/users', passport.authenticate('jwt', { session: false}), (req, res) => {
 Users.find()
 .then((users) => {
 res.status(201).json(users);
@@ -81,7 +85,7 @@ Movies.findOne({ Title: req.params.Title })
 
 //Get description of a genre by name 
 app.get('/movies/genre/:Name', (req, res) => {
-  Movies.findOne({'Genre.Name': req.params.Name }) 
+  Movies.findOne({ 'Genre.Name': req.params.Name }) 
    .then((movie) => {
      res.json(movie.Genre.Description);
    }) 
