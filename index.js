@@ -119,9 +119,9 @@ app.post('/users',
 //you can either use a chain of methods like .not().isEmpty()
 //which means "opposite of isEmpty" in plain english "is not empty"
 //or use .isLength({min: 5}) which means
-//minimum value of 5 characters are only allowed
+//minimum value of 3 characters are only allowed
 [
-  check('Name', 'Name is required').isLength({min: 5}),
+  check('Name', 'Name is required').isLength({min: 3}),
   check('Name', 'Name contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
   check('Email', 'Email does not appear to be valid').isEmail()
@@ -163,6 +163,26 @@ if (!errors.isEmpty()) {
   });
 })
 
+//Add a movie to a user's list of favorites
+app.post('/users/:Name/movies/:MovieID', (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password);
+
+  Users.findOneAndUpdate({ Name: req.params.Name }, {
+    $push: { FavoriteMovies: req.params.MovieID }
+    },
+    { new: true },
+  (err, updateUser) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    }
+    else { 
+      res.json(updateUser);
+    }
+  }
+  );
+})
+
 //Update the Email Address of the user
 
 app.put('/users/:Name', (req, res) => {
@@ -186,23 +206,6 @@ app.put('/users/:Name', (req, res) => {
   );
   })
 
-//Add a movie to a user's list of favorites
-app.post('/users/:Name/movies/:MovieID', (req, res) => {
-  Users.findOneAndUpdate({ Name: req.params.Name }, {
-    $push: { FavoriteMovies: req.params.MovieID }
-    },
-    { new: true },
-  (err, updateUser) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Error' + err);
-    }
-    else { 
-      res.json(updateUser);
-    }
-  }
-  );
-})
 //Delete a movie to a user's list of favorites
 app.delete('/users/:Name/movies/:MovieID', (req, res) => {
   Users.findOneAndUpdate({ Name: req.params.Name}, {
@@ -240,7 +243,7 @@ Users.findOneAndRemove({ Name: req.params.Name })
 
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
-console.log('Listening on Port' + port);
+console.log('Listening on Port ' + port);
 });
   
 
