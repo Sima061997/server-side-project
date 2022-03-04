@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const req = require('express/lib/request');
 const app = express();
 const { check, validationResult } = require('express-validator');
+require("dotenv").config();
 
 
 app.use(bodyParser.json());
@@ -26,7 +27,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 
- mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+  mongoose.connect(process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true }, console.log("Connected to DB"));
 
 
 const Movies = Models.Movie;
