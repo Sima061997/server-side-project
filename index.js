@@ -26,7 +26,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 
- mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const Movies = Models.Movie;
@@ -40,7 +40,7 @@ res.send('Welcome to MyFlix');
 });
 
 //Get all movies on list
-app.get('/movies', passport.authenticate('jwt', { session: false}), (req, res) => {
+app.get('/movies', /*passport.authenticate('jwt', { session: false}),*/ (req, res) => {
   Movies.find()
   .then((movies) => { 
   res.status(201).json(movies);
@@ -145,7 +145,7 @@ if (!errors.isEmpty()) {
       Users
       .create ({
         Name: req.body.Name,
-        Password: req.body.Password,
+        Password: hashedPassword,
         Email: req.body.Email,
         Birthday: req.body.Birthday
       })
@@ -182,7 +182,6 @@ app.post('/users/:Name/movies/:MovieID', (req, res) => {
   }
   );
 })
-
 //Update the Email Address of the user
 
 app.put('/users/:Name', (req, res) => {
