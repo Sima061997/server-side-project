@@ -225,6 +225,7 @@ app.delete('/users/:Name/movies/:MovieID', (req, res) => {
   )
 })
 //Delete a user by username
+
 app.delete('/users/:Name', (req, res) => {
 Users.findOneAndRemove({ Name: req.params.Name })
 .then((user) => {
