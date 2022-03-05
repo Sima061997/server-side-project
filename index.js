@@ -37,7 +37,7 @@ const Directors = Models.Director;
 
 
 app.get('/', (req, res) => {
-res.send('Welcome to MyFlix');
+res.send('Welcome to MyFlixDB');
 });
 
 //Get all movies on list
@@ -225,7 +225,6 @@ app.delete('/users/:Name/movies/:MovieID', (req, res) => {
   )
 })
 //Delete a user by username
-
 app.delete('/users/:Name', (req, res) => {
 Users.findOneAndRemove({ Name: req.params.Name })
 .then((user) => {
