@@ -27,7 +27,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 
-  mongoose.connect(process.env.CONNECTION_URI , { useNewUrlParser: true, useUnifiedTopology: true }, console.log(" Connected to DB "));
+  mongoose.connect('mongodb+srv://SimaDhimal:$Imasd24@myflixdb.h1zmi.mongodb.net/myFlixDB?retryWrites=true&w=majority' , { useNewUrlParser: true, useUnifiedTopology: true }, console.log(" Connected to DB "));
 
 
 const Movies = Models.Movie;
