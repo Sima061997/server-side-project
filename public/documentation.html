@@ -28,7 +28,13 @@
              <th>Request body data format</th>
              <th>Response body data format</th>
         </tr>
-        
+        <tr>
+            <td>Get to Database</td>
+            <td>/</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A text message indicating Database is open </td>
+        </tr>
         <tr>
             <td>Get a list of movies</td>
             <td>/movies</td>
@@ -143,6 +149,18 @@
             <td>DELETE</td>
             <td>None</td>
             <td>A text message indicating that an id been deleted</td>
+        </tr>
+        <tr>
+            <td>User Login</td>
+            <td>/login</td>
+            <td>POST</td>
+            <td>A JSON object holding username and Password:
+                <p>{ </p>
+                <p>"Name": </p>
+                <p>"Password":</p>
+                <p>}</p>
+            </td>
+            <td></td>
         </tr>
         </table>
     </div>

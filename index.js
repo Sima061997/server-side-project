@@ -1,5 +1,5 @@
 const express = require("express"),
-  bodyParser = require("body-parser");
+bodyParser = require("body-parser");
 
 const res = require("express/lib/response");
 const morgan = require("morgan");
@@ -15,40 +15,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 let auth = require("./auth")(app);
 const cors = require("cors");
 app.use(cors());
-
+//JWT
 const passport = require("passport");
 require("./application/passport");
 // Morgan middleware library in use to log all requests to the terminal
 app.use(morgan("common"));
 // Function to serve all static files inside one folder
-app.use(express.static("public"));
+//app.use(express.static("public"));
 
-mongoose.connect(process.env.CONNECTION_URI,
+mongoose.connect(
+  process.env.CONNECTION_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
   console.log(" Connected to DB ")
 );
 
 const Movies = Models.Movie;
 const Users = Models.User;
-const Genres = Models.Genre;
-const Directors = Models.Director;
-
 app.get("/", (req, res) => {
   res.send("Welcome to MyFlixDB");
 });
 
 //Get all movies on list
-app.get(
-  "/movies",
+app.get("/movies",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Movies.find()
-      .then((movies) => {
-        res.status(201).json(movies);
-      })
-      .catch((err) => {
+      .then(movies => res.status(201).json(movies))
+      .catch(err => {
         console.error(err);
-        res.status(500).send("Error:" + err);
+        res.status(500).send("Error: " + err);
       });
   }
 );
@@ -59,23 +54,20 @@ app.get(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Users.find()
-      .then((users) => {
-        res.status(201).json(users);
-      })
-      .catch((err) => {
+      .then(users => res.status(201).json(users))
+      .catch(err => {
         console.error(err);
-        res.status(500).send("Error:" + err);
+        res.status(500).send("Error: " + err);
       });
   }
 );
 
 // Get a user by username
 app.get("/users/:Name", (req, res) => {
-  Users.findOne({ Name: req.params.Name })
-    .then((user) => {
-      res.json(user);
-    })
-    .catch((err) => {
+  const {Name} = req.params;
+  Users.findOne({ Name })
+    .then(user => res.json(user))
+    .catch(err => {
       console.error(err);
       res.status(500).send("Error: " + err);
     });
@@ -83,11 +75,10 @@ app.get("/users/:Name", (req, res) => {
 
 //Get a data about a movie by Title
 app.get("/movies/:Title", (req, res) => {
-  Movies.findOne({ Title: req.params.Title })
-    .then((movies) => {
-      res.json(movies);
-    })
-    .catch((error) => {
+  const {Title} = req.params;
+  Movies.findOne({ Title })
+    .then(movies => res.json(movies))
+    .catch(error => {
       console.error(err);
       res.status(500).send("Error:" + err);
     });
@@ -96,10 +87,8 @@ app.get("/movies/:Title", (req, res) => {
 //Get description of a genre by name
 app.get("/movies/genre/:Name", (req, res) => {
   Movies.findOne({ "Genre.Name": req.params.Name })
-    .then((movie) => {
-      res.json(movie.Genre.Description);
-    })
-    .catch((err) => {
+    .then(movie => res.json(movie.Genre.Description))
+    .catch(err => {
       console.error(err);
       res.status(500).send("Error:" + err);
     });
@@ -107,10 +96,8 @@ app.get("/movies/genre/:Name", (req, res) => {
 //Get data about a director by name
 app.get("/movies/director/:Name", (req, res) => {
   Movies.findOne({ "Director.Name": req.params.Name })
-    .then((movie) => {
-      res.json(movie.Director);
-    })
-    .catch((err) => {
+    .then(movie => res.json(movie.Director))
+    .catch(err => {
       console.error(err);
       res.status(500).send("Error:" + err);
     });
@@ -122,7 +109,7 @@ app.post(
   // Validation logic here for request
   //you can either use a chain of methods like .not().isEmpty()
   //which means "opposite of isEmpty" in plain english "is not empty"
-  //or use .isLength({min: 5}) which means
+  //or use .isLength({min: 3}) which means
   //minimum value of 3 characters are only allowed
   [
     check("Name", "Name is required").isLength({ min: 3 }),
@@ -144,7 +131,7 @@ app.post(
 
     let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({ Name: req.body.Name })
-      .then((user) => {
+      .then(user => {
         if (user) {
           return res.status(400).send(req.body.Name + " already exists");
         } else {
@@ -154,10 +141,44 @@ app.post(
             Email: req.body.Email,
             Birthday: req.body.Birthday,
           })
-            .then((user) => {
-              res.status(201).json(user);
-            })
-            .catch((err) => {
+            .then(user => res.status(201).json(user))
+            .catch(err => {
+              console.error(err);
+              res.status(500).send("Error: " + err);
+            });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
+
+//Add a new movie if the movie doesn't exist in list
+app.post("/movies",
+  (req, res) => {
+    // check the validation object for errors
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    Movies.findOne({ Title: req.body.Title })
+      .then(movie => {
+        if (movie) {
+          return res.status(400).send(req.body.Title + " already exists");
+        } else {
+          Movies.create({
+            Title: req.body.Title,
+            Description: req.body.Description,
+            Genre: req.body.Genre,
+            Director: req.body.Director,
+            Actors: req.body.Actors,
+            ImageURL: req.body.ImageURL,
+            Featured: req.body.Featured
+          })
+            .then(movies => res.status(201).json(movies))
+            .catch(err => {
               console.error(err);
               res.status(500).send("Error: " + err);
             });
@@ -171,7 +192,9 @@ app.post(
 );
 
 //Add a movie to a user's list of favorites
-app.post("/users/:Name/movies/:MovieID", (req, res) => {
+app.post("/users/:Name/movies/:MovieID",
+ passport.authenticate("jwt", { session: false }),
+ (req, res) => {
 
   Users.findOneAndUpdate(
     { Name: req.params.Name },
@@ -189,9 +212,12 @@ app.post("/users/:Name/movies/:MovieID", (req, res) => {
     }
   );
 });
+
 //Update the Email Address of the user
 
-app.put("/users/:Name", (req, res) => {
+app.put("/users/:Name",
+passport.authenticate("jwt", { session: false }),
+(req, res) => {
   Users.findOneAndUpdate(
     { Name: req.params.Name },
     {
@@ -208,14 +234,16 @@ app.put("/users/:Name", (req, res) => {
         console.error(err);
         res.status(500).send("Error:" + err);
       } else {
-        res.json({updatedUser});
+        res.json({ updatedUser });
       }
     }
   );
 });
 
 //Delete a movie to a user's list of favorites
-app.delete("/users/:Name/movies/:MovieID", (req, res) => {
+app.delete("/users/:Name/movies/:MovieID", 
+ passport.authenticate('jwt', { session: false }), 
+ (req, res) => {
   Users.findOneAndUpdate(
     { Name: req.params.Name },
     {
@@ -233,16 +261,18 @@ app.delete("/users/:Name/movies/:MovieID", (req, res) => {
   );
 });
 //Delete a user by username
-app.delete("/users/:Name", (req, res) => {
+app.delete("/users/:Name", 
+passport.authenticate('jwt', { session: false }),
+ (req, res) => {
   Users.findOneAndRemove({ Name: req.params.Name })
-    .then((user) => {
+    .then(user => {
       if (!user) {
         res.status(400).send(req.params.Name + " was not found");
       } else {
         res.status(200).send(req.params.Name + " was deleted.");
       }
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.status(500).send("Error: " + err);
     });
