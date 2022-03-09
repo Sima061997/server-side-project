@@ -1,7 +1,7 @@
 const express = require("express"),
 bodyParser = require("body-parser");
 
-const res = require("express/lib/response");
+require("express/lib/response");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const Models = require("./models.js");
@@ -12,25 +12,26 @@ require("dotenv").config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let auth = require("./auth")(app);
+require('./auth')(app);
 const cors = require("cors");
 app.use(cors());
+
 //JWT
 const passport = require("passport");
 require("./application/passport");
 // Morgan middleware library in use to log all requests to the terminal
 app.use(morgan("common"));
-// Function to serve all static files inside one folder
-//app.use(express.static("public"));
+ //Function to serve all static files inside one folder
+app.use(express.static("public"));
 
 mongoose.connect(
   process.env.CONNECTION_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
-  console.log(" Connected to DB ")
-);
+  console.log(" Connected to DB "));
 
 const Movies = Models.Movie;
 const Users = Models.User;
+
 app.get("/", (req, res) => {
   res.send("Welcome to MyFlixDB");
 });
@@ -79,8 +80,8 @@ app.get("/movies/:Title", (req, res) => {
   Movies.findOne({ Title })
     .then(movies => res.json(movies))
     .catch(error => {
-      console.error(err);
-      res.status(500).send("Error:" + err);
+      console.error(error);
+      res.status(500).send("Error:" + error);
     });
 });
 
@@ -107,9 +108,6 @@ app.get("/movies/director/:Name", (req, res) => {
 app.post(
   "/users",
   // Validation logic here for request
-  //you can either use a chain of methods like .not().isEmpty()
-  //which means "opposite of isEmpty" in plain english "is not empty"
-  //or use .isLength({min: 3}) which means
   //minimum value of 3 characters are only allowed
   [
     check("Name", "Name is required").isLength({ min: 3 }),
@@ -213,7 +211,7 @@ app.post("/users/:Name/movies/:MovieID",
   );
 });
 
-//Update the Email Address of the user
+//Update the name of the user
 
 app.put("/users/:Name",
 passport.authenticate("jwt", { session: false }),

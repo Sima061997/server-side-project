@@ -1,169 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie App</title>
     <style>
-        table, th, td {
-          border:1px solid black;
-        }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-<header>
-    <h1>Movie App</h1>
-    <p>This Web Application provides users with access to  information about different movies, their directors and genres. Users are able to sign up, update their personal information and create a list of their own favourite movies. 
-    </p>
-</header>
-<main>
-    <div>
-        <table style="width:100%">
-        <tr>
-             <th>Request</th>
-             <th>URL</th>
-             <th>HTTP Method</th>
-             <th>Request body data format</th>
-             <th>Response body data format</th>
-        </tr>
-        <tr>
+  <body>
+    <header>
+      <h1>Movie App</h1>
+      <p>
+        This Web Application provides users with access to information about
+        different movies, their directors and genres. Users are able to sign up,
+        update their personal information and create a list of their own
+        favorite movies.
+      </p>
+    </header>
+    <main>
+      <div>
+        <table style="width: 100%">
+          <tr>
+            <th>Request</th>
+            <th>URL</th>
+            <th>HTTP Method</th>
+            <th>Request body data format</th>
+            <th>Response body data format</th>
+          </tr>
+          <tr>
             <td>Get to Database</td>
             <td>/</td>
             <td>GET</td>
             <td>None</td>
-            <td>A text message indicating Database is open </td>
-        </tr>
-        <tr>
+            <td>A text message indicating Database is open</td>
+          </tr>
+          <tr>
             <td>Get a list of movies</td>
             <td>/movies</td>
             <td>GET</td>
             <td>None</td>
-            <td>A JSON object holding data
-                about all the movies</td>
-        </tr>
-        <tr>
-            <td> Get data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title </td>
+            <td>A JSON object holding data about all the movies</td>
+          </tr>
+          <tr>
+            <td>
+              Get data (description, genre, director, image URL, whether it’s
+              featured or not) about a single movie by title
+            </td>
             <td>/movies/:Title</td>
             <td>GET</td>
             <td>None</td>
-            <td>A JSON object holding data
-                about a single movie. Example <br> {
-                   <p> "Title": "Harry Potter and the Philosopher's Stone", </p>
-                   <p> "Description": "...." </p>
-                     <p>  "Genre": { </p>
-                      <p>"Name": "Fantasy", </p> 
-                      <p> "Description": "" } </p> 
-                        <p>  "Director": {  </p>
-                        <p> "Name": "Chris Columbus", </p>
-                        <p> "Bio": "",          </p>
-                       <p> "Birth": "September 10, 1958" }, </p>
-                     <p> "ImageURL": "" <br> } </p>
-                     <p> "Featured": </p>
-                     <p>"Actors: [ ] "</p>
-                    </td>
-        </tr>
-        <tr>
-            <td>Get data about a genre (description) by name/title (e.g., “Fantasy”)</td>
+            <td>
+              A JSON object holding data about a single movie. Example <br />
+              {
+              <p>_id: ObjectId("6213e685fabe2f1e581a7515")</p>
+              <p>"Title": "Harry Potter and the Philosopher's Stone",</p>
+              <p>"Description": "...."</p>
+              <p>"Genre": {</p>
+              <p>"Name": "Fantasy",</p>
+              <p>"Description": "" }</p>
+              <p>"Director": {</p>
+              <p>"Name": "Chris Columbus",</p>
+              <p>"Bio": "",</p>
+              <p>"Birth": "September 10, 1958" },</p>
+              <p>
+                "ImageURL": "" <br />
+                }
+              </p>
+              <p>"Featured":</p>
+              <p>"Actors: [ ] "</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Get data about a genre (description) by name/title (e.g.,
+              “Fantasy”)
+            </td>
             <td>/movies/genre/:Name</td>
             <td>GET</td>
             <td>None</td>
-            <td>A JSON object holding data
-                about a genre. Example <br> {
-                    <p> "Genre": { </p>
-                    <p>    "Name": "Fantasy", </p>
-                      <p> "Description": "" <br> }    </p>  
-                </td>
-            
-        </tr>
-        <tr>
+            <td>
+              A JSON object holding data about a genre. Example <br />
+              {
+              <p>"Genre": {</p>
+              <p>"Name": "Fantasy",</p>
+              <p>
+                "Description": "" <br />
+                }
+              </p>
+            </td>
+          </tr>
+          <tr>
             <td>Get data about a director (name, birth year) by name</td>
             <td>/movies/director/:Name</td>
             <td>GET</td>
             <td>None</td>
-            <td>A JSON object holding data about a director. Example:
-                <p> "Director": <br> { </p>
-                <p> "Name": "Olivier Nakache", </p>
-                 <p> "Bio": "", </p>
-                <p> "Birth": "15 April 1973" <br> } </p>
-                </td>
-        </tr>
-        <tr>
-            <td>Add a new User</td>
+            <td>
+              A JSON object holding data about a director. Example:
+              <p>
+                "Director": <br />
+                {
+              </p>
+              <p>"Name": "Olivier Nakache",</p>
+              <p>"Bio": "",</p>
+              <p>
+                "Birth": "15 April 1973" <br />
+                }
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Get all Users</td>
+            <td>/users</td>
+            <td>Get</td>
+            <td>None</td>
+            <td>
+              A JSON object listing all the users holding data about the users,
+              including an ID:
+              <p>{</p>
+              <p>_id:6223271ccf28a8418afcf944</p>
+              <p>Name:"Ronald"</p>
+              <p>
+                Password: "$2b$04$EPvlWXHhs5mtE9wOGMqUROOQHxT3QQilRBLLI8Po8Z1q"
+              </p>
+              <p>Email: "Ronald.Wisley@gmail.com"</p>
+              <p>Birthday:1997-06-01T00:00:00.000+00:00</p>
+              <p>FavoriteMovies: []</p>
+              <p>}</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Get User by name</td>
+            <td>/users/:Name</td>
+            <td>Get</td>
+            <td>None</td>
+            <td>
+              A JSON object listing a user holding data about the user given by
+              name
+              <p>{</p>
+              <p>_id:6223271ccf28a8418afcf944</p>
+              <p>Name:"Ronald"</p>
+              <p>
+                Password: "$2b$04$EPvlWXHhs5mtE9wOGMqUROOQHxT3QQilRBLLI8Po8Z1q"
+              </p>
+              <p>Email: "Ronald.Wisley@gmail.com"</p>
+              <p>Birthday:1997-06-01T00:00:00.000+00:00</p>
+              <p>FavoriteMovies: []</p>
+              <p>}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Add a new User if user doesn't exist</td>
             <td>/users</td>
             <td>POST</td>
-            <td>A JSON object holding
-                data about the user to
-                add, structured like: 
-                <p>{ </p>
-                  <p>"name": "Nemo", </p>
-                   <p> "favoriteMovies": [] </p>
-                  <p> }</p>
+            <td>
+              A JSON object holding data about the user to add, structured like:
+              <p>{</p>
+              <p>"Name": "Nemo",</p>
+              <p>"Email": "Find.nemo@gmail.com"</p>
+              <p>"Password": "Nemo"</p>
+              <p>"Birthday": 2002-08-09</p>
+              <p>"favoriteMovies": []</p>
+              <p>}</p>
             </td>
-            <td>A JSON object holding data
-                about the user that was
-                added, including an ID:
-                <p>{ </p>
-                  <p> "id": 1, </p>
-                   <p> "name": "Nemo", </p>
-                   <p> "favoriteMovies": [] </p>
-                 <p> }</p>
-                </td>
-        </tr>
-        <tr>
-            <td>Update the info (username) about the user</td>
-            <td>/users/:id</td>
-            <td>PUT</td>
-            <td>A JSON object holding
-                data about the user,structured like: 
-                <p>{ </p>
-                  <p>"name": "Sam Updated Name", </p>
-                   <p> "favoriteMovies": [] </p>
-                  <p> }</p> </td>
-            <td>A JSON object holding data
-                about the user including an ID:
-                <p>{ </p>
-                  <p> "id": 1, </p>
-                   <p> "name": "Sam Updated Name", </p>
-                   <p> "favoriteMovies": [] </p>
-                 <p> }</p></td>
-        </tr> 
-        <tr>
+            <td>
+              A JSON object holding data about the user that was added,
+              including an ID:
+              <p>{</p>
+              <p>_id:6223271ccf28a8418afcf945</p>
+              <p>Name:"Nemo"</p>
+              <p>
+                Password: "$2b$04$EPvlWXHhs5mtE9wOGMqUROOQHxT3QQilRBLLI8Po8Z1q"
+              </p>
+              <p>Email: "Find.nemo@gmail.com"</p>
+              <p>Birthday:2002-08-09T00:00:00.000+00:00</p>
+              <p>FavoriteMovies: []</p>
+              <p>}</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Add a new movie if the movie doesn't exist</td>
+            <td>/movies</td>
+            <td>POST</td>
+            <td>
+              A JSON object holding data about the movie, structured like:
+            <p>{</p>
+            <p>"Title": "Harry Potter and the Philosopher's Stone",</p>
+            <p>"Description": "....",</p>
+            <p>"Genre": {</p>
+            <p>"Name": "Fantasy",</p>
+            <p>"Description": "" }</p>
+            <p>"Director": {</p>
+            <p>"Name": "Chris Columbus",</p>
+            <p>"Bio": "",</p>
+            <p>"Birth": "September 10, 1958" },</p>
+            <p>"ImageURL": ""</p>
+            <p>"Featured":, </p>
+            <p>"Actors: [ ] "</p>
+            <p>}</p>
+        </td>
+        <td>
+            A JSON object holding data about the movie including objectID, structured like:
+          <p>{</p>
+            <p>_id: ObjectId("6213e685fabe2f1e581a7515")</p>
+          <p>"Title": "Harry Potter and the Philosopher's Stone",</p>
+          <p>"Description": "....",</p>
+          <p>"Genre": {</p>
+          <p>"Name": "Fantasy",</p>
+          <p>"Description": "" }</p>
+          <p>"Director": {</p>
+          <p>"Name": "Chris Columbus",</p>
+          <p>"Bio": "",</p>
+          <p>"Birth": "September 10, 1958" },</p>
+          <p>"ImageURL": ""</p>
+          <p>"Featured":, </p>
+          <p>"Actors: [ ] "</p>
+          <p>}</p>
+      </td>
+          </tr>
+          
+          <tr>
             <td>Add a movie to the user's list of favorites</td>
-            <td>/users/:id/:movieTitle</td>
+            <td>/users/:Name/movies/:MovieID</td>
             <td>POST</td>
             <td>None</td>
-            <td>A text message indicating that a movie has been added to given id</td>
-        </tr>
-        <tr>
+            <td>
+              <p>{</p>
+               <p> "_id": "6227b38142e00d1309d73831", </p>
+                 <p> "Name": "Hanry", </p>
+                   <p> "Password": "$2b$04$1nNQjlFzNp1700HhAQ94auBWo0ffkELTVgTFWPsRVu", </p>
+                   <p> "Email": "Hanry.dish@gmail.com", </p>
+                 <p> "Birthday": "2000-03-03T00:00:00.000Z", </p>
+               <p> "FavoriteMovies": [
+                 <br>  "496e7465727374656c6c6172",
+                   <br> "62115a6ba427cf5b2bc9dc7d",
+                <br> "6213e7cdfabe2f1e581a7516" </p>
+                  <br>],
+                   <p> "__v": 0 </p>
+                <p>}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>Update the name of the user</td>
+            <td>/users/:Name</td>
+            <td>PUT</td>
+            <td>
+              A JSON object holding data about the user,structured like:
+              <p>{</p>
+              <p>"Name": "Hanry",</p>
+              <p>}</p>
+            </td>
+            <td>
+              A JSON object holding data about the user including an ID:
+              <p> "_id": "6227b38142e00d1309d73831", </p>
+                 <p> "Name": "Hanry", </p>
+                   <p> "Password": "$2b$04$1nNQjlFzNp1700HhAQ94auBWo0ffkELTVgTFWPsRVu", </p>
+                   <p> "Email": "Hanry.dish@gmail.com", </p>
+                 <p> "Birthday": "2000-03-03T00:00:00.000Z", </p>
+               <p> "FavoriteMovies": [
+                 <br>  "496e7465727374656c6c6172",
+                   <br> "62115a6ba427cf5b2bc9dc7d",
+                <br> "6213e7cdfabe2f1e581a7516" </p>
+                  <br>],
+                   <p> "__v": 0 </p>
+                <p>}</p>
+            </td>
+          </tr>
+          <tr>
             <td>Delete a movie to the user's list of favorites</td>
-            <td>/users/:id/:movieTitle</td>
+            <td>/users/:Name/movies/:MovieID</td>
             <td>DELETE</td>
             <td>None</td>
-            <td>A text message indicating that a movie has been deleted to given id</td>
-        </tr>
-        <tr>
+            <td>
+              A JSON object holding a data about the user with a movieID deleted. Example fron the above list
+                <p> "_id": "6227b38142e00d1309d73831", </p>
+                   <p> "Name": "Hanry", </p>
+                     <p> "Password": "$2b$04$1nNQjlFzNp1700HhAQ94auBWo0ffkELTVgTFWPsRVu", </p>
+                     <p> "Email": "Hanry.dish@gmail.com", </p>
+                   <p> "Birthday": "2000-03-03T00:00:00.000Z", </p>
+                     <p> "FavoriteMovies": [
+                   <br>  "496e7465727374656c6c6172",
+                     <br> "62115a6ba427cf5b2bc9dc7d" </p>
+                     <p> ], </p>
+                     <p> "__v": 0 </p>
+                  <p>}</p>
+              </td>
+          </tr>
+          <tr>
             <td>Allow a user to deregister according to id</td>
-            <td> /users/:id</td>
+            <td>/users/:Name</td>
             <td>DELETE</td>
             <td>None</td>
-            <td>A text message indicating that an id been deleted</td>
-        </tr>
-        <tr>
+            <td>A text message indicating that the user been deleted</td>
+          </tr>
+          <tr>
             <td>User Login</td>
             <td>/login</td>
             <td>POST</td>
-            <td>A JSON object holding username and Password:
-                <p>{ </p>
-                <p>"Name": </p>
-                <p>"Password":</p>
-                <p>}</p>
+            <td>
+              A JSON object holding username and Password:
+              <p>{</p>
+              <p>"Name":</p>
+              <p>"Password":</p>
+              <p>}</p>
             </td>
-            <td></td>
-        </tr>
+            <td> A JSON object holding data about the user including JWT 
+                <p>{ </p>
+                <p> "user": { </p>
+                 <p>   "_id": "6227b38142e00d1309d73831", </p>
+                  <p>  "Name": "Hanry", </p>
+                 <p>   "Password": "$2b$04$1nNQjlFzNp1700HhAQ94auBWo0ffkELTV.K3sTeoR7K.gTFWPsRVu", </p>
+                  <p>  "Email": "Hanry.dish@gmail.com", </p>
+                   <p> "Birthday": "2000-03-03T00:00:00.000Z", </p>
+                   <p> "FavoriteMovies": [
+                      <br>  "496e7465727374656c6c6172",
+                      <br>  "62115a6ba427cf5b2bc9dc7d",
+                      <br>  "6213e7cdfabe2f1e581a7516" </p>
+                   <p>], </p> 
+                   <p> "__v": 0 </p>
+                <p> }, </p>
+                <p> "token": "eyJhbGciOzNDc2MiwiZXhwIjoxNjQ3NDM5NTYI8u70b8G_AX8ptP0" </p>
+            <p> } </p>
+        </td>
+          </tr>
         </table>
-    </div>
-</main>
-</body>
+      </div>
+    </main>
+  </body>
 </html>
