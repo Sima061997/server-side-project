@@ -1,11 +1,12 @@
 const express = require("express"),
+const app = express(),
   bodyParser = require("body-parser");
 
 require("express/lib/response");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const Models = require("./models.js");
-const app = express();
+
 const { check, validationResult } = require("express-validator");
 require("dotenv").config();
 
@@ -51,7 +52,7 @@ app.get(
 
 //[Read] Get all the users in list
 app.get( "/users",
- // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Users.find()
       .then((users) => res.status(201).json(users))
@@ -64,7 +65,7 @@ app.get( "/users",
 
 //[Read] Get a user by username
 app.get("/users/:Name", 
-//passport.authenticate('jwt', { session: false }),
+passport.authenticate('jwt', { session: false }),
 (req, res) => {
   const { Name } = req.params;
   Users.findOne({ Name })
