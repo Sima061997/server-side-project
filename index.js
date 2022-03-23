@@ -51,7 +51,7 @@ app.get(
 
 //[Read] Get all the users in list
 app.get( "/users",
-  passport.authenticate("jwt", { session: false }),
+ // passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Users.find()
       .then((users) => res.status(201).json(users))
@@ -64,7 +64,7 @@ app.get( "/users",
 
 //[Read] Get a user by username
 app.get("/users/:Name", 
-passport.authenticate('jwt', { session: false }),
+//passport.authenticate('jwt', { session: false }),
 (req, res) => {
   const { Name } = req.params;
   Users.findOne({ Name })
