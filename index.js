@@ -30,7 +30,7 @@ let auth = require('./auth')(app);
 
 //JWT
 const passport = require('passport');
-require('./passport');
+require('./application/passport');
 
 //Middleware:Morgan Logging Package
 app.use(morgan('common'));
