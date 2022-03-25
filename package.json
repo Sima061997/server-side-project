@@ -21,7 +21,6 @@
     "url": "https://github.com/Sima061997/server-side-project/issues"
   },
   "homepage": "https://github.com/Sima061997/server-side-project#readme",
-  "proxy": "https://secret-falls-20485.herokuapp.com/",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",

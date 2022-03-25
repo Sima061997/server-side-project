@@ -13,9 +13,10 @@ require("dotenv").config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-require("./auth")(app);
 const cors = require("cors");
 app.use(cors());
+
+require("./auth")(app);
 
 //JWT
 const passport = require("passport");
