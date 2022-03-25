@@ -20,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect(
   process.env.CONNECTION_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
-  console.log(" Connected to DB ")
 );
 
 const cors = require('cors');
@@ -42,7 +41,7 @@ app.get("/", (req, res) => {
 // [Read] Get all movies on list
 app.get(
   "/movies",
-  //passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Movies.find()
       .then((movies) => res.status(201).json(movies))
