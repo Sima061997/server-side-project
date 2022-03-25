@@ -1,28 +1,21 @@
-const express = require("express"),
-const app = express(),
-  bodyParser = require("body-parser");
+const mongoose = require('mongoose');
+const Models = require('./models.js');
 
-require("express/lib/response");
-const morgan = require("morgan");
-const mongoose = require("mongoose");
-const Models = require("./models.js");
+const Movies = Models.Movie;
+const Users = Models.User;
 
-const { check, validationResult } = require("express-validator");
+const express = require('express'),
+  app = express(),
+  bodyParser = require('body-parser'),
+  uuid = require('uuid'),
+  morgan = require('morgan');
+
+const { check, validationResult } = require('express-validator');
 require("dotenv").config();
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-const cors = require("cors");
-app.use(cors());
-
-require("./auth")(app);
-
-//JWT
-const passport = require("passport");
-require("./application/passport");
-// Morgan middleware library in use to log all requests to the terminal
-app.use(morgan("common"));
 
 mongoose.connect(
   process.env.CONNECTION_URI,
@@ -30,8 +23,17 @@ mongoose.connect(
   console.log(" Connected to DB ")
 );
 
-const Movies = Models.Movie;
-const Users = Models.User;
+const cors = require('cors');
+app.use(cors());
+
+let auth = require('./auth')(app);
+
+//JWT
+const passport = require('passport');
+require('./passport');
+
+//Middleware:Morgan Logging Package
+app.use(morgan('common'));
 
 app.get("/", (req, res) => {
   res.send("Welcome to MyFlixDB");
